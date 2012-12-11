@@ -9,4 +9,6 @@ import com.mailplants.admin.users.domain.UserInfo;
 public interface UserInfoService {
 	
 	public List<UserInfo> selectUserInfoList(HashMap<String, String> map);
+	
+	public int selectUserInfoListCount(HashMap<String, String> map);
 }

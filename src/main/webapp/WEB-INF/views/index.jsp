@@ -90,7 +90,7 @@
     	<a href="/" class="nav-header"><i class="icon-dashboard"></i>Dashboard</a>
         <a href="#userinfo-menu" class="nav-header" data-toggle="collapse"><i class="icon-user"></i>User Information</a>
         <ul id="userinfo-menu" class="nav nav-list collapse in">
-            <li><a href="index.html">User Status</a></li>
+            <li><a href="/user/status">User Status</a></li>
             <li ><a href="users.html">Secession Status</a></li>
             <li ><a href="media.html">User Trend</a></li>
             

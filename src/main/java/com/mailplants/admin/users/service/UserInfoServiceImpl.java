@@ -14,7 +14,6 @@ import com.mailplants.admin.users.domain.UserInfo;
 
 
 @Service("userInfoService")
-
 public class UserInfoServiceImpl implements UserInfoService {
 
 	private Logger logger = Logger.getLogger(getClass());
@@ -22,9 +21,12 @@ public class UserInfoServiceImpl implements UserInfoService {
 	@Autowired
 	protected UserInfoDao userInfoDao;
 	
-	@Transactional
 	public List<UserInfo> selectUserInfoList(HashMap<String, String> map){
 		return userInfoDao.selectUserInfoList(map);
+	}
+	
+	public int selectUserInfoListCount(HashMap<String, String> map){
+		return userInfoDao.selectUserInfoListCount(map);
 	}
 
 }

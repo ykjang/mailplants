@@ -38,23 +38,36 @@ public class UserInfoController {
 	private UserInfoService userInfoServcie;
 	
 	@RequestMapping(value = "/status", method = RequestMethod.GET)
-	public String userStatusList(Locale locale, @RequestParam(required = false) HashMap<String, String> params, Model model){
+	public String userStatusList(@RequestParam(required = false) HashMap<String, String> params,
+								 @RequestParam(defaultValue = "1") int currPage,
+								 @RequestParam(defaultValue = "2") int rowPerPage,
+								 Model model){
 		
-		logger.info("a: " + params.get("a"));
-		logger.info("b: " + params.get("b"));
-		logger.info("c: " + params.get("c"));
+		// System.out.println("[currPage] " + currPage);
+		// System.out.println("[rowPerPage] " + rowPerPage);
 		
-		int curr_page = Integer.parseInt(params.get("curr_page"));
-		int limits = Integer.parseInt(params.get("limits"));
-		
-		int total_count = 0;
-		int total_page = total_count%limits==0?total_count/limits:(total_count/limits)+1;
-		
-		// Total Count
+		// Paging 
+		int firstPage = ( ( ( currPage - 1) / 10 ) * 10 )+ 1;
 		
 		
+		int totalCount = userInfoServcie.selectUserInfoListCount(params);
+		int totalPage = totalCount%rowPerPage==0?totalCount/rowPerPage:(totalCount/rowPerPage)+1;
+		int start = rowPerPage*currPage - rowPerPage;
+		
+		// System.out.println("[firstPage] " + firstPage);
+		// System.out.println("[totalPage] " + totalPage);
+		
+		params.put("start", start+"");
+		params.put("limit", rowPerPage+"");
 		
 		List<UserInfo> list = userInfoServcie.selectUserInfoList(params);
+		
+		// View Model Set
+		model.addAttribute("firstPage", firstPage);
+		model.addAttribute("totalCount", totalCount);
+		model.addAttribute("totalPage", totalPage);
+		model.addAttribute("currPage", currPage);
+		
 		model.addAttribute("status", list);
 		
 		return "/user/status";

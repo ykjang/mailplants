@@ -16,7 +16,37 @@
 		</association>
 	</resultMap>
 
-	<select id="getUserList" resultMap="userinfoMap" parameterType="hashmap">
+	<select id="selectUserInfoListCount" resultType="int" parameterType="hashmap">
+		SELECT
+			COUNT(0) as tot_cnt
+	 	FROM
+	 		USERS A, 
+			(SELECT
+			 		USER_ID, MAX(REGISTER_D) LAST_REGISTER_D
+			 	FROM 
+			 		LOGIN_HISTORY
+			 GROUP BY USER_ID) B
+	 	WHERE
+	 		A.ID = B.USER_ID
+		 	<if test="search_word != null">
+			 	<choose>
+				    <when test="search_type == 'id'">
+				    	AND A.ID = #{search_word}
+				    </when>
+				    <when test="search_type == 'f_name'">
+				    	AND A.F_NAME = #{search_word}
+				    </when>
+				    <when test="search_type == 'email'">
+				    	AND A.EMAIL = #{search_word}
+				    </when>
+				    <when test="search_type == 'phone'">
+				    	AND A.PHONE = #{search_word}
+				    </when>
+		  		</choose>
+		 	</if>
+	</select>
+	
+	<select id="selectUserInfoList" resultMap="userinfoMap" parameterType="hashmap">
 		SELECT
 			A.ID as id,
 		 	A.F_NAME as f_name,
@@ -51,6 +81,7 @@
 				    </when>
 		  		</choose>
 		 	</if>
+		LIMIT ${start}, ${limit} 	
 	</select>
 </mapper>
 

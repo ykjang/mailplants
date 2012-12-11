@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.util.HashMap;
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +23,26 @@ public class UserInfoServiceImplTest {
 	@Autowired
 	private UserInfoService userInfoService;
 	
+	
 	@Test
-	public void testSelectUserInfoList() {
+	public void testSelectUserInfoListCount() {
 		
 		HashMap<String, String> param = new HashMap<String, String>();
 		param.put("search_word", "aiwhite75");
 		param.put("search_type", "id");
+		
+		int count = userInfoService.selectUserInfoListCount(param);
+		
+		System.out.println(count);
+		
+	}
+	
+	@Test
+	public void testSelectUserInfoList() {
+		
+		HashMap<String, String> param = new HashMap<String, String>();
+		param.put("search_word", "");
+		param.put("search_type", "");
 		
 		List<UserInfo> records = userInfoService.selectUserInfoList(param);
 		
