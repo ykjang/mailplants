@@ -23,7 +23,7 @@ import com.mailplants.admin.users.service.UserInfoService;
  * Handles requests for the application home page.
  */
 @Controller
-public class CommonController {
+public class CommonController  {
 	
 	private static final Logger logger = LoggerFactory.getLogger(CommonController.class);
 	
