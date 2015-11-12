@@ -24,7 +24,7 @@ public class UserInfoServiceImplTest {
 	private UserInfoService userInfoService;
 	
 	
-	@Test
+	@Ignore
 	public void testSelectUserInfoListCount() {
 		
 		HashMap<String, String> param = new HashMap<String, String>();
@@ -37,7 +37,7 @@ public class UserInfoServiceImplTest {
 		
 	}
 	
-	@Test
+	@Ignore
 	public void testSelectUserInfoList() {
 		
 		HashMap<String, String> param = new HashMap<String, String>();
