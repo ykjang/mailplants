@@ -22,6 +22,10 @@ public class UserInfoServiceImplTest {
 	
 	@Autowired
 	private UserInfoService userInfoService;
+
+
+
+
 	
 	
 	@Ignore
