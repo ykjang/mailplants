@@ -26,6 +26,11 @@ public class UserInfoServiceImplTest {
 
 
 
+
+
+
+
+
 	
 	
 	@Ignore
