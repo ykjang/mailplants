@@ -25,14 +25,6 @@ public class UserInfoServiceImplTest {
 
 
 
-
-
-
-
-
-
-	
-	
 	@Ignore
 	public void testSelectUserInfoListCount() {
 		
