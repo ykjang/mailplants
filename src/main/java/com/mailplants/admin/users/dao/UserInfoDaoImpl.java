@@ -24,6 +24,11 @@ public class UserInfoDaoImpl extends SqlSessionDaoSupport implements UserInfoDao
 
 
 
+
+
+
+
+
 	public int selectUserInfoListCount(HashMap<String, String> map){
 		return (Integer)getSqlSession().selectOne("userinfo.selectUserInfoListCount", map);
 	}
